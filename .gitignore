@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Environment var (API KEY)
+src/assets/env.js
