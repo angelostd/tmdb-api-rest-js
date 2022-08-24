@@ -1,14 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
+    <!-- <link rel="icon" type="image/x-icon" href="https://i.imgur.com/lsVclbw.png" sizes="32x32"> -->
     <title>Cumflix</title>
 </head>
+
 <body>
-    <h1>Cumflix</h1>
-    <script type ="module" src="./assets/main.js"></script>
+    <header class="header hero">
+        <div class="nav-bar">
+            <i class="fas fa-3x fa-search nav-bar__search-icon"></i>
+            <a class="nav-bar__redirect nav-bar__redirect--series" href="#">Series</a>
+            <a class="nav-bar__redirect nav-bar__redirect--movies" href="#">Movies</a>
+            <a class="nav-bar__redirect nav-bar__redirect--categories" href="#">Categories</a>
+        </div>
+        <div class="hero-info">
+            <h1 class="hero-info__title">Better Call Saul</h1>
+            <div class="interaction-menu">
+                <i class="far fa-bookmark interaction-menu__bookmark"></i>
+                <button type="button" class="interaction-menu__trailer-btn trailer-btn">Play Trailer</button>
+                <i class="fas fa-info interaction-menu__more-info"></i>
+            </div>
+            <div class="hero-labels-section">
+                <a href="#"><span class="category hero-labels-section__category"></span></a>
+                <a href="#"><span class="category hero-labels-section__category"></span></a>
+                <a href="#"><span class="category hero-labels-section__category"></span></a>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <section>
+            <article>
+                <h2>Section Title</h2>
+                <div>
+                    <img src="" alt=""><img src="" alt=""><img src="" alt="">
+                </div>
+            </article>
+        </section>
+        <section>
+            <article>
+                <h2>Categories</h2>
+                <div>
+                    <div>
+                        <a href=""><span></span></a>
+                        <a href=""><span></span></a>
+                        <a href=""><span></span></a>
+                        <a href=""><span></span></a>
+                    </div>
+                    <div>
+                        <a href=""><span></span></a>
+                        <a href=""><span></span></a>
+                        <a href=""><span></span></a>
+                        <a href=""><span></span></a>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="footer">
+        <div>
+            <img src="" alt="">
+        </div>
+        <div>
+            <p></p>
+        </div>
+        <div>
+            <div>
+                <i class="fab fa-platzi"></i>
+                <i class="fab fa-linkedin"></i>
+                <i class="fab fa-github"></i>
+                <i class="fab fa-twitter"></i>
+            </div>
+            <a href="#">Documentacion</a>
+        </div>
+    </footer>
+    <script type="module" src="./assets/main.js"></script>
+    <script src="https://kit.fontawesome.com/8aeb1532d4.js" crossorigin="anonymous"></script>
 </body>
 </html>

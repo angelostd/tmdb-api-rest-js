@@ -1,3 +1,15 @@
+:root {
+    --bold: 700;
+    --semi-bold: 600;
+    --medium: 500;
+    --regular: 400;
+
+    --pink-red: #E50914;
+    --white-smoke: #F2F2F2;
+    --dark-russ: #101011;
+    --main-black: #030303;
+}
+
 * {
     box-sizing:  border-box;
     margin: 0;
@@ -6,6 +18,68 @@
 
 html {
     font-size: 62.5%;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
+    color: var(--white-smoke);
+}
+
+/* header */
+
+.header {
+    min-width: 320px;
+    width: 100%;
+    height: 408px;
+    background-image: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 33%, rgba(255,255,255,0) 66%, rgba(0,0,0,0.75) 100%), url(https://m.media-amazon.com/images/I/91NSSRd5-dL._SL1500_.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-bar {
+    width: 100%;
+    margin: 12px 0;
+    padding-left: 16px;
+    padding-right: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-bar a {
+    text-decoration: none;
+    color: var(--white-smoke);
+    font-weight: var(--semi-bold);
+    font-size: 1.3rem;
+}
+
+.nav-bar a:visited {
+    text-decoration: none;
+    color: var(--white-smoke);
+}
+/* main */
+
+/* footer */
+
+
+/* Social Media Icons */
+.fa-platzi {
+    width: 18px;
+    height: 18px;
+    background-image: url('https://icons-for-free.com/iconfiles/png/512/platzi-1324440213777394405.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Aux */
+
+.hidden {
+    display: none;
+}
+
+.border {
+    border: 1px solid red;
 }
