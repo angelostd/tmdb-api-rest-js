@@ -23,13 +23,16 @@ html {
     color: var(--white-smoke);
 }
 
+a {
+    text-decoration: none;
+}
 /* header */
 
 .header {
     min-width: 320px;
     width: 100%;
     height: 408px;
-    background-image: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 33%, rgba(255,255,255,0) 66%, rgba(0,0,0,0.75) 100%), url(https://m.media-amazon.com/images/I/91NSSRd5-dL._SL1500_.jpg);
+    background-image: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(92, 92, 92, 0.303) 33%, rgba(92, 92, 92, 0.303) 66%, rgba(0,0,0,0.75) 100%), url(https://m.media-amazon.com/images/I/91NSSRd5-dL._SL1500_.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -49,14 +52,51 @@ html {
     align-items: center;
 }
 
-.nav-bar a {
+.nav-bar a, .nav-bar a:visited {
     text-decoration: none;
     color: var(--white-smoke);
     font-weight: var(--semi-bold);
     font-size: 1.3rem;
 }
 
-.nav-bar a:visited {
+.hero-info {
+    width: 100%;
+    height: 140px;
+    padding: 0 16px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-info__title {
+    font-size: 2.4rem;
+    font-weight: var(--bold);
+}
+
+.interaction-menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--white-smoke);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+}
+
+.hero-labels-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.hero-labels-section a, .hero-labels-section a:visited {
     text-decoration: none;
     color: var(--white-smoke);
 }
@@ -74,7 +114,7 @@ html {
     background-size: cover;
 }
 
-/* Aux */
+/* Assets */
 
 .hidden {
     display: none;
@@ -82,4 +122,22 @@ html {
 
 .border {
     border: 1px solid red;
+}
+
+.trailer-btn {
+    height: 28px;
+    width: 80px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--pink-red);
+    color: var(--white-smoke);
+    font-size: 1.3rem;
+    font-weight: var(--regular);
+}
+
+.category {
+    border: 2px solid var(--white-smoke);
+    border-radius: 8px;
+    padding: 4px 8px;
+    font-weight: var(--bold);
 }
