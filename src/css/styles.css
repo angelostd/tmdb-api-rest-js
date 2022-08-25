@@ -100,20 +100,113 @@ a {
     text-decoration: none;
     color: var(--white-smoke);
 }
+
 /* main */
+
+.main {
+    background-color: var(--main-black);
+}
+
+.main-section {
+    padding: 32px 0px 0px 28px;
+}
+
+.main-section__title {
+    font-size: 1.3rem;
+    font-weight: var(--regular);
+    margin-bottom: 20px;
+}
+
+.poster-container__img {
+    height: 152px;
+    width: 100px;
+    border-radius: 8px;
+}
+
+.categories-groups {
+    height: 140px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.categories-group-left, .categories-group-right {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.categories-group-left a, .categories-group-right a {
+    text-decoration: none;
+    color: var(--white-smoke);
+}
+
+.main-section--top-rated {
+    padding-bottom: 28px;
+}
 
 /* footer */
 
+.footer {
+    background-color: var(--dark-russ);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-/* Social Media Icons */
+.footer__tmdb-logo img{
+    margin-left: 16px;
+    height: 64px;
+    width: 64px;
+}
+
+.footer-links {
+    height: 100%;
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.footer-disclaimer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-weight: var(--regular);
+}
+
+.footer-links__social-icons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 16px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--white-smoke);
+    font-weight: var(--regular);
+}
+
 .fa-platzi {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     background-image: url('https://icons-for-free.com/iconfiles/png/512/platzi-1324440213777394405.png');
     background-repeat: no-repeat;
     background-size: cover;
+    filter: invert(87%) sepia(82%) saturate(520%) hue-rotate(22deg) brightness(88%) contrast(76%);
 }
 
+.fa-linkedin {
+    color: #0072b1;
+}
+
+.fa-twitter {
+    color:  #00acee;
+}
 /* Assets */
 
 .hidden {
@@ -140,4 +233,5 @@ a {
     border-radius: 8px;
     padding: 4px 8px;
     font-weight: var(--bold);
+    max-width: 76px;
 }
