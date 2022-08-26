@@ -289,8 +289,27 @@ body {
 
 /* main search */
 
+.main-search__input {
+    width: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 32px auto;
+}
 
+.main-search__bar {
+    width: 288px;
+    height: 44px;
+    border-radius: 12px;
+    margin-right: 12px;
+    background-color: var(--main-black);
+    border: 2px solid var(--white-smoke);
+}
 
+.main-search__bar::placeholder {
+    color: var(--white-smoke);
+    padding-left: 16px;
+}
 /* footer */
 
 .footer {
