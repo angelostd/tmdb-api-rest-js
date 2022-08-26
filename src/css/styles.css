@@ -256,6 +256,41 @@ body {
     text-justify: inter-word;
 }
 
+/* main category */
+.poster-wrapper__img {
+    width: 150px;
+    height: 224px;
+    border-radius: 8px;
+}
+
+.main-category-header, .main-search-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 16px;
+}
+
+.main-category__title {
+    font-weight: var(--semi-bold);
+    font-size: 2.5rem;
+    padding: 40px 0px 32px 36px;
+}
+
+.movies-wrapper {
+    height: auto;
+    width: 324px;
+    margin: 0 auto;
+    display: grid;
+    gap: 16px 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr) );
+    padding-bottom: 100px;
+}
+
+/* main search */
+
+
+
 /* footer */
 
 .footer {

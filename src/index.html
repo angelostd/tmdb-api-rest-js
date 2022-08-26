@@ -9,12 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
-    <!-- <link rel="icon" type="image/x-icon" href="https://i.imgur.com/lsVclbw.png" sizes="32x32"> -->
+    <link rel="icon" type="image/x-icon" href="https://i.imgur.com/lsVclbw.png" sizes="32x32">
     <title>Cumflix</title>
 </head>
 
 <body>
-    <header class="header hero hero-details">
+    <header class="header hero hero-details hidden">
         <div class="hero-details__back">
             <i class="fas fa-5x fa-chevron-left"></i>
         </div>
@@ -38,7 +38,53 @@
         </div>
     </header>
     <main class="main main--details">
-        <article class="main-details">
+        <article class="main-search">
+            <div class="main-search-header">
+                <i class="fas fa-5x fa-chevron-left"></i>
+                <input type="search" placeholder="Search movies, tv shows, ...">
+            </div>
+            <div class="main-search--movies-wrapper movies-wrapper">
+                <img class="poster-wrapper__img"
+                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img"
+                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img"
+                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                    alt="poster of a movie">
+            </div>
+        </article>
+        <article class="main-category hidden">
+            <div class="main-category-header">
+                <i class="fas fa-5x fa-chevron-left"></i>
+                <h2 class="main-category__title">Category</h2>
+            </div>
+            <div class="main-category--movies-wrapper movies-wrapper">
+                <img class="poster-wrapper__img"
+                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img"
+                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img"
+                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                    alt="poster of a movie">
+            </div>
+        </article>
+        <article class="main-details hidden">
             <section class="main-details-more-info">
                 <div class="more-info-header">
                     <i class="far fa-3x fa-bookmark interaction-menu__bookmark"></i>
@@ -176,7 +222,7 @@
             </div>
         </section>
     </main>
-    <footer class="footer">
+    <footer class="footer hidden">
         <div class="footer__tmdb-logo">
             <a target="_blank" href="https://www.themoviedb.org/">
                 <img src="https://camo.githubusercontent.com/2f85352fdfabf42a2f778901b0ae1b069e94932969b0983f18fdd44db4c9696d/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313230302f312a76495237694f2d31476e59327859784c364e69596b772e706e67"
