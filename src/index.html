@@ -14,14 +14,17 @@
 </head>
 
 <body>
-    <header class="header hero">
-        <div class="nav-bar">
+    <header class="header hero hero-details">
+        <div class="hero-details__back">
+            <i class="fas fa-5x fa-chevron-left"></i>
+        </div>
+        <div class="hidden nav-bar">
             <i class="fas fa-3x fa-search nav-bar__search-icon"></i>
             <a class="nav-bar__redirect nav-bar__redirect--series" href="#">Series</a>
             <a class="nav-bar__redirect nav-bar__redirect--movies" href="#">Movies</a>
             <a class="nav-bar__redirect nav-bar__redirect--categories" href="#">Categories</a>
         </div>
-        <div class="hero-info">
+        <div class="hidden hero-info">
             <h1 class="hero-info__title">Better Call Saul</h1>
             <div class="interaction-menu">
                 <i class="far fa-3x fa-bookmark interaction-menu__bookmark"></i>
@@ -34,8 +37,48 @@
             </div>
         </div>
     </header>
-    <main class="main">
-        <section class="main-section main-section--myList">
+    <main class="main main--details">
+        <article class="main-details">
+            <section class="main-details-more-info">
+                <div class="more-info-header">
+                    <i class="far fa-3x fa-bookmark interaction-menu__bookmark"></i>
+                    <h1 class="more-info-header__title">Better Call Saul</h1>
+                    <div class="more-details__liked-section">
+                        <p>96%</p>
+                        <i class="fas fa-2x fa-thumbs-up"></i>
+                    </div>
+                </div>
+                <div class="more-info-categories">
+                    <a href="#"><span class="category hero-labels-section__category">Drama</span></a>
+                    <a href="#"><span class="category hero-labels-section__category">Crime</span></a>
+                </div>
+                <div class="more-info-readable">
+                    <button type="button" class="more-details__trailer-btn trailer-btn">Play Trailer</button>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dignissim, arcu eu molestie ullamcorper, justo lacus convallis risus, eu pellentesque est magna sed sapien. Aenean sodales eleifend laoreet. In varius arcu eu odio.</p>
+                </div>
+            </section>
+            <section class="main-section main-section--related">
+                <h2 class="main-section__title main-section__title--top-related">Related</h2>
+                <div class="main-section__poster-container poster-container">
+                    <img class="poster-container__img"
+                        src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                        alt="poster of a movie">
+                    <img class="poster-container__img"
+                        src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                        alt="poster of a movie">
+                    <img class="poster-container__img"
+                        src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                        alt="poster of a movie">
+                    <img class="poster-container__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                        alt="poster of a movie">
+                    <img class="poster-container__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                        alt="poster of a movie">
+                    <img class="poster-container__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                        alt="poster of a movie">
+                </div>
+            </section>
+        </article>
+        <section class="hidden main-section main-section--myList">
             <h2 class="main-section__title main-section__title--myList">My List</h2>
             <div class="main-section__poster-container poster-container">
                 <img class="poster-container__img"
@@ -55,7 +98,7 @@
                     alt="poster of a movie">
             </div>
         </section>
-        <section class="main-section main-section--trending">
+        <section class="hidden main-section main-section--trending">
             <h2 class="main-section__title main-section__title--trending">Trending</h2>
             <div class="main-section__poster-container poster-container">
                 <img class="poster-container__img"
@@ -75,7 +118,7 @@
                     alt="poster of a movie">
             </div>
         </section>
-        <section class="main-section main-section--categories">
+        <section class="hidden main-section main-section--categories">
             <h2 class="main-section__title main-section__title--categories">Categories</h2>
             <div class="categories-groups">
                 <div class="categories-group-left">
@@ -92,7 +135,7 @@
                 </div>
             </div>
         </section>
-        <section class="main-section main-section--random">
+        <section class="hidden main-section main-section--random">
             <h2 class="main-section__title main-section__title--random">Random</h2>
             <div class="main-section__poster-container poster-container">
                 <img class="poster-container__img"
@@ -112,7 +155,7 @@
                     alt="poster of a movie">
             </div>
         </section>
-        <section class="main-section main-section--top-rated">
+        <section class="hidden main-section main-section--top-rated">
             <h2 class="main-section__title main-section__title--top-rated">Top Rated</h2>
             <div class="main-section__poster-container poster-container">
                 <img class="poster-container__img"
