@@ -10,11 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
     <!-- <link rel="icon" type="image/x-icon" href="https://i.imgur.com/lsVclbw.png" sizes="32x32"> -->
-    <title>Cumflix</title>
+    <title>D'arte Films</title>
 </head>
 
 <body>
     <header class="header hero">
+        <div class="hero-details__back hidden">
+            <i class="fas fa-5x fa-chevron-left"></i>
+        </div>
         <div class="nav-bar">
             <i class="fas fa-3x fa-search nav-bar__search-icon"></i>
             <a class="nav-bar__redirect nav-bar__redirect--series" href="#">Series</a>
@@ -35,6 +38,95 @@
         </div>
     </header>
     <main class="main">
+        <article class="main-search hidden">
+            <div class="main-search-header">
+                <i class="fas fa-5x fa-chevron-left"></i>
+                <div class="main-search__input">
+                    <input class="main-search__bar" type="search" placeholder="Search movies, tv shows, ...">
+                    <i class="fas fa-4x fa-search nav-bar__search-icon"></i>
+                </div>
+            </div>
+            <div class="main-search--movies-wrapper movies-wrapper">
+                <img class="poster-wrapper__img"
+                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img"
+                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img"
+                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                    alt="poster of a movie">
+            </div>
+        </article>
+        <article class="main-category hidden">
+            <div class="main-category-header">
+                <i class="fas fa-5x fa-chevron-left"></i>
+                <h2 class="main-category__title">Category</h2>
+            </div>
+            <div class="main-category--movies-wrapper movies-wrapper">
+                <img class="poster-wrapper__img"
+                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img"
+                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img"
+                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                    alt="poster of a movie">
+                <img class="poster-wrapper__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                    alt="poster of a movie">
+            </div>
+        </article>
+        <article class="main-details hidden">
+            <section class="main-details-more-info">
+                <div class="more-info-header">
+                    <i class="far fa-3x fa-bookmark interaction-menu__bookmark"></i>
+                    <h1 class="more-info-header__title">Better Call Saul</h1>
+                    <div class="more-details__liked-section">
+                        <p>96%</p>
+                        <i class="fas fa-2x fa-thumbs-up"></i>
+                    </div>
+                </div>
+                <div class="more-info-categories">
+                    <a href="#"><span class="category hero-labels-section__category">Drama</span></a>
+                    <a href="#"><span class="category hero-labels-section__category">Crime</span></a>
+                </div>
+                <div class="more-info-readable">
+                    <button type="button" class="more-details__trailer-btn trailer-btn">Play Trailer</button>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dignissim, arcu eu molestie ullamcorper, justo lacus convallis risus, eu pellentesque est magna sed sapien. Aenean sodales eleifend laoreet. In varius arcu eu odio.</p>
+                </div>
+            </section>
+            <section class="main-section main-section--related">
+                <h2 class="main-section__title main-section__title--top-related">Related</h2>
+                <div class="main-section__poster-container poster-container">
+                    <img class="poster-container__img"
+                        src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                        alt="poster of a movie">
+                    <img class="poster-container__img"
+                        src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                        alt="poster of a movie">
+                    <img class="poster-container__img"
+                        src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
+                        alt="poster of a movie">
+                    <img class="poster-container__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                        alt="poster of a movie">
+                    <img class="poster-container__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                        alt="poster of a movie">
+                    <img class="poster-container__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
+                        alt="poster of a movie">
+                </div>
+            </section>
+        </article>
         <section class="main-section main-section--myList">
             <h2 class="main-section__title main-section__title--myList">My List</h2>
             <div class="main-section__poster-container poster-container">
@@ -57,22 +149,8 @@
         </section>
         <section class="main-section main-section--trending">
             <h2 class="main-section__title main-section__title--trending">Trending</h2>
-            <div class="main-section__poster-container poster-container">
-                <img class="poster-container__img"
-                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
-                    alt="poster of a movie">
-                <img class="poster-container__img"
-                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
-                    alt="poster of a movie">
-                <img class="poster-container__img"
-                    src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
-                    alt="poster of a movie">
-                <img class="poster-container__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
-                    alt="poster of a movie">
-                <img class="poster-container__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
-                    alt="poster of a movie">
-                <img class="poster-container__img" src="https://m.media-amazon.com/images/I/711eM3-rs8L._AC_SL1200_.jpg"
-                    alt="poster of a movie">
+            <div id="trending-section" class="main-section__poster-container poster-container">
+
             </div>
         </section>
         <section class="main-section main-section--categories">
