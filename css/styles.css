@@ -120,7 +120,6 @@ body {
 .fa-chevron-left {
     position: relative;
     margin: 16px;
-
 }
 
 /* main */
@@ -166,7 +165,7 @@ body {
 }
 
 .categories-groups {
-    height: 140px;
+    height: 328px;
     display: flex;
     justify-content: space-evenly;
 }
@@ -176,7 +175,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .categories-group-left a,
@@ -216,6 +215,7 @@ body {
 
 .more-info-header__title {
     padding-left: 20px;
+    text-align: center;
 }
 
 .more-details__liked-section {
@@ -306,10 +306,11 @@ body {
     border: 2px solid var(--white-smoke);
 }
 
-.main-search__bar::placeholder {
+.main-search__bar::placeholder, .main-search__bar:focus {
     color: var(--white-smoke);
     padding-left: 16px;
 }
+
 /* footer */
 
 .footer {
@@ -399,9 +400,9 @@ body {
 }
 
 .category {
+    width: fit-content;
     border: 2px solid var(--white-smoke);
     border-radius: 8px;
     padding: 4px 8px;
     font-weight: var(--bold);
-    max-width: 76px;
 }
