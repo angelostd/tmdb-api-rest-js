@@ -19,8 +19,7 @@ export async function getTrendingMoviesPreview() {
         allMovies.push(moviePreview);
     });
 
-    let container = document.getElementById('trending-section');
-    container.innerHTML = allMovies.join('');
+    trendingWrapperPreview.innerHTML = allMovies.join('');
 }
 
 export async function getCategoriesPreview() {
@@ -29,21 +28,19 @@ export async function getCategoriesPreview() {
     const allMovies = makeCategoryContainer(data?.genres);
     // const tvCategories = makeCategoryContainer(dataTV?.genres);
 
-    let moviesCategories = allMovies.splice(0, 9);
-    let moviesCategories2 = allMovies.splice(0, 10);
+    let categoriesToInsert = allMovies.splice(0, 9);
+    let categoriesToInsert2 = allMovies.splice(0, 10);
 
-    const moviesContainer = document.getElementById('movies-categories-container-1');
-    const moviesContainer2 = document.getElementById('movies-categories-container-2');
     // const tvContainer = document.getElementById('tv-categories-container');
 
-    moviesContainer.innerHTML = moviesCategories.join('');
-    moviesContainer2.innerHTML = moviesCategories2.join('');
+    moviesCategoriesContainer.innerHTML = categoriesToInsert.join('');
+    moviesCategoriesContainer2.innerHTML = categoriesToInsert2.join('');
 }
 
 export async function getRandomSeries() {
     const {data} = await api('genre/tv/list');
 
-    console.log(data);
+    // constructior
 }
 
 export async function getTopRatedMoviesPreview() {
@@ -56,8 +53,7 @@ export async function getTopRatedMoviesPreview() {
         allMovies.push(moviePreview);
     });
 
-    let container = document.getElementById('top-rated-section');
-    container.innerHTML = allMovies.join('');
+    topRatedWrapperPreview.innerHTML = allMovies.join('');
 }
 
 // Aux fn

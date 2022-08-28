@@ -10,26 +10,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
     <!-- <link rel="icon" type="image/x-icon" href="https://i.imgur.com/lsVclbw.png" sizes="32x32"> -->
-    <title>D'arte Films</title>
+    <title>Films D'arte</title>
 </head>
 
 <body>
-    <header class="header hero">
-        <div class="hero-details__back hidden">
+    <header id="header-section" class="header hero">
+        <div id="header-arrow" class="hero-details__back">
             <i class="fas fa-5x fa-chevron-left"></i>
         </div>
-        <div class="nav-bar">
-            <i class="fas fa-3x fa-search nav-bar__search-icon"></i>
+        <div id="header-navbar" class="nav-bar">
+            <i id="search-home-btn" class="fas fa-3x fa-search nav-bar__search-icon"></i>
             <a class="nav-bar__redirect nav-bar__redirect--series" href="#">Series</a>
             <a class="nav-bar__redirect nav-bar__redirect--movies" href="#">Movies</a>
             <a class="nav-bar__redirect nav-bar__redirect--categories" href="#">Categories</a>
         </div>
-        <div class="hero-info">
+        <div id="header-info" class="hero-info">
             <h1 class="hero-info__title">Better Call Saul</h1>
             <div class="interaction-menu">
                 <i class="far fa-3x fa-bookmark interaction-menu__bookmark"></i>
                 <button type="button" class="interaction-menu__trailer-btn trailer-btn">Play Trailer</button>
-                <span class="icon-container"><i class="fas fa-1x fa-info interaction-menu__more-info"></i></span>
+                <span id="header-more-info" class="icon-container"><i class="fas fa-1x fa-info interaction-menu__more-info"></i></span>
             </div>
             <div class="hero-labels-section">
                 <a href="#"><span class="category hero-labels-section__category">Drama</span></a>
@@ -37,10 +37,10 @@
             </div>
         </div>
     </header>
-    <main class="main">
-        <article class="main-search hidden">
+    <main id="main-section" class="main">
+        <article id="main-search" class="main-search">
             <div class="main-search-header">
-                <i class="fas fa-5x fa-chevron-left"></i>
+                <i id="return-home" class="fas fa-5x fa-chevron-left"></i>
                 <div class="main-search__input">
                     <input class="main-search__bar" type="search" placeholder="Search movies, tv shows, ...">
                     <i class="fas fa-4x fa-search nav-bar__search-icon"></i>
@@ -64,7 +64,7 @@
                     alt="poster of a movie">
             </div>
         </article>
-        <article class="main-category hidden">
+        <article id="main-category" class="main-category">
             <div class="main-category-header">
                 <i class="fas fa-5x fa-chevron-left"></i>
                 <h2 class="main-category__title">Category</h2>
@@ -87,7 +87,7 @@
                     alt="poster of a movie">
             </div>
         </article>
-        <article class="main-details hidden">
+        <article id="main-details" class="main-details">
             <section class="main-details-more-info">
                 <div class="more-info-header">
                     <i class="far fa-3x fa-bookmark interaction-menu__bookmark"></i>
@@ -129,7 +129,7 @@
                 </div>
             </section>
         </article>
-        <section class="main-section main-section--myList">
+        <section id="my-list-preview-section" class="main-section main-section--myList">
             <h2 class="main-section__title main-section__title--myList">My List</h2>
             <div class="main-section__poster-container poster-container">
                 <!-- <img class="poster-container__img"
@@ -137,13 +137,13 @@
                     alt="poster of a movie"> -->
             </div>
         </section>
-        <section class="main-section main-section--trending">
+        <section  id="trending-preview-section" class="main-section main-section--trending">
             <h2 class="main-section__title main-section__title--trending">Trending</h2>
-            <div id="trending-section" class="main-section__poster-container poster-container">
+            <div id="trending-wrapper-preview" class="main-section__poster-container poster-container">
 
             </div>
         </section>
-        <section class="main-section main-section--categories">
+        <section id="categories-preview-section" class="main-section main-section--categories">
             <h2 class="main-section__title main-section__title--categories">Categories</h2>
             <div class="categories-groups">
                 <div id="movies-categories-container-2" class="categories-group-left">
@@ -154,7 +154,7 @@
                 </div>
             </div>
         </section>
-        <section class="main-section main-section--random">
+        <section id="random-preview-section" class="main-section main-section--random">
             <h2 class="main-section__title main-section__title--random">Random</h2>
             <div class="main-section__poster-container poster-container">
                 <img class="poster-container__img"
@@ -174,16 +174,16 @@
                     alt="poster of a movie">
             </div>
         </section>
-        <section class="main-section main-section--top-rated">
+        <section id="top-rated-preview-section" class="main-section main-section--top-rated">
             <h2 class="main-section__title main-section__title--top-rated">Top Rated</h2>
-            <div id="top-rated-section" class="main-section__poster-container poster-container">
+            <div id="top-rated-wrapper-preview" class="main-section__poster-container poster-container">
                 <!-- <img class="poster-container__img"
                     src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
                     alt="poster of a movie"> -->
             </div>
         </section>
     </main>
-    <footer class="footer">
+    <footer id="footer-section" class="footer">
         <div class="footer__tmdb-logo">
             <a target="_blank" href="https://www.themoviedb.org/">
                 <img src="https://camo.githubusercontent.com/2f85352fdfabf42a2f778901b0ae1b069e94932969b0983f18fdd44db4c9696d/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313230302f312a76495237694f2d31476e59327859784c364e69596b772e706e67"
@@ -207,6 +207,7 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://kit.fontawesome.com/8aeb1532d4.js" crossorigin="anonymous"></script>
+    <script src="./assets/nodes.js"></script>
     <script type="module" src="./assets/main.js"></script>
     <script type="module" src="./assets/navigation.js"></script>
 </body>
