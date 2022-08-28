@@ -41,8 +41,25 @@ export async function getRandomSeries() {
     randomSectionTitle.innerHTML = randomCategory.name;
     let data2 = await innerFetch(randomCategory.id);
 
+    const allSeries = [];
+    const series = data2.results;
+
+    series.forEach(serie => {
+        // let moviePreview = `<img class="poster-container__img" src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}">`;
+        let seriePreview = document.createElement('img');
+        seriePreview.classList.add('poster-container__img')
+        seriePreview.setAttribute('alt', serie.name);
+        seriePreview.setAttribute('src', `https://image.tmdb.org/t/p/w300${serie.poster_path}`);
+
+        seriePreview.addEventListener('click', () => {
+            location.hash = `#details=${serie.id}-${serie.name}`;
+        });
+
+        allSeries.push(seriePreview);
+    });
+
     randomWrapperPreview.innerHTML = "";
-    randomWrapperPreview.append(...makeMovieContainerX(data2));
+    randomWrapperPreview.append(...allSeries);
 }
 
 export async function getTopRatedMoviesPreview() {
@@ -53,7 +70,7 @@ export async function getTopRatedMoviesPreview() {
 }
 
 export async function getMoviesByCategory(id) {
-    const {data} = await api('/discover/movie', {
+    const { data } = await api('/discover/movie', {
         params: {
             with_genres: id,
         },
@@ -64,7 +81,7 @@ export async function getMoviesByCategory(id) {
 }
 
 export async function getMoviesBySearch(query) {
-    const {data} = await api('/search/multi', {
+    const { data } = await api('/search/multi', {
         params: {
             query,
         },
@@ -75,7 +92,19 @@ export async function getMoviesBySearch(query) {
 }
 
 export async function getDetailsById(id) {
-    console.log('lol');
+    const { data: movie } = await api(`movie/${id}`);
+    console.log('movie :>> ', movie);
+
+    const movieImgUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    headerSection.style.backgroundImage = `url('${movieImgUrl}')`
+
+    detailsVote.innerText = `${Math.round(movie.vote_average * 1000) / 100}%`;
+
+    let categoriesList = makeCategoryContainerLimited(movie.genres, 2);
+    detailsCategories.innerHTML = "";
+    detailsCategories.append(...categoriesList);
+
+    detailsOverview.innerText = movie.overview;
 }
 
 // Aux fn
@@ -88,6 +117,28 @@ function getRandomInt(min, max) {
 function makeCategoryContainer(array) {
     const container = [];
     for (let index = 0; index < array.length; index++) {
+        // const category = `<a href="#"><span id="${array[index].id}" class="category">${array[index].name}</span></a>`;
+
+        // const category = document.createElement('a');
+        // category.href = "#";
+
+        const category = document.createElement('p');
+        category.setAttribute('id', 'id' + array[index].id);
+        category.classList.add('category');
+        category.innerText = `${array[index].name}`;
+        category.addEventListener('click', () => {
+            // console.log(array[index].id, array[index].name);
+            location.hash = `#category=${array[index].id}-${array[index].name}`;
+        });
+
+        container.push(category);
+    }
+    return container;
+}
+
+function makeCategoryContainerLimited(array, limit) {
+    const container = [];
+    for (let index = 0; index < limit; index++) {
         // const category = `<a href="#"><span id="${array[index].id}" class="category">${array[index].name}</span></a>`;
 
         // const category = document.createElement('a');

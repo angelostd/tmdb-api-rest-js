@@ -46,7 +46,7 @@ function homePage() {
     // => Removing classes
     headerSection.classList.remove('hero-details');
     headerSection.classList.remove('hidden');
-    // headerSection.style.backgroundImage = '';
+    headerSection.style.backgroundImage = '';
     myListPreviewSection.classList.remove('hidden');
     trendingPreviewSection.classList.remove('hidden');
     categoriesPreviewSection.classList.remove('hidden');
@@ -148,8 +148,6 @@ function detailsPage() {
     // => API
     const [urlPage, detailsId] = location.hash.split('=');
     let [id, name] = detailsId.split('-');
-    console.log('name :>> ', name);
-    console.log('id :>> ', id);
     name = decodeURI(name);
     detailsTitle.innerText = name;
     main.getDetailsById(id);

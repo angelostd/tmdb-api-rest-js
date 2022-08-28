@@ -47,6 +47,10 @@ const arrowToHome = $('return-home');
 const headerShowMoreInfo = $('header-more-info');
 
 const categoryTitle = $('main-category-title');
-const detailsTitle = $('details-section-title');
 const randomSectionTitle = $('main-random-title');
 const CategoriesSectionTitle = $('main-categories-title');
+
+const detailsTitle = $('details-section-title');
+const detailsOverview = $('details-section-overview');
+const detailsCategories = $('details-section-categories');
+const detailsVote = $('details-section-vote');
