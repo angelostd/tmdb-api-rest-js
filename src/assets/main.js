@@ -12,7 +12,8 @@ const api = axios.create({
 export async function getTrendingMoviesPreview() {
     const { data } = await api('trending/all/day');
 
-    trendingWrapperPreview.innerHTML = makeMovieContainer(data).join('');
+    trendingWrapperPreview.innerHTML = "";
+    trendingWrapperPreview.append(...makeMovieContainerX(data));
 }
 
 export async function getCategoriesPreview() {
@@ -37,15 +38,18 @@ export async function getRandomSeries() {
     const { data } = await api('genre/tv/list');
     let randomCategory = data.genres[getRandomInt(0, data.genres.length)];
 
-    randomTitle.innerHTML = randomCategory.name;
+    randomSectionTitle.innerHTML = randomCategory.name;
     let data2 = await innerFetch(randomCategory.id);
-    randomWrapperPreview.innerHTML = makeMovieContainer(data2);
+
+    randomWrapperPreview.innerHTML = "";
+    randomWrapperPreview.append(...makeMovieContainerX(data2));
 }
 
 export async function getTopRatedMoviesPreview() {
     const { data } = await api('movie/top_rated');
 
-    topRatedWrapperPreview.innerHTML = makeMovieContainer(data).join('');
+    topRatedWrapperPreview.innerHTML = "";
+    topRatedWrapperPreview.append(...makeMovieContainerX(data));
 }
 
 export async function getMoviesByCategory(id) {
@@ -54,15 +58,24 @@ export async function getMoviesByCategory(id) {
             with_genres: id,
         },
     });
-    const allMovies = [];
-    const movies = data.results;
 
-    movies.forEach(movie => {
-        let moviePreview = `<img class="poster-wrapper__img" src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}">`;
-        allMovies.push(moviePreview);
+    verticalMovieWrapperCategory.innerHTML = " ";
+    verticalMovieWrapperCategory.append(...makeMovieContainerY(data))
+}
+
+export async function getMoviesBySearch(query) {
+    const {data} = await api('/search/multi', {
+        params: {
+            query,
+        },
     });
 
-    verticalMovieWrapperCategory.innerHTML = allMovies.join('');
+    verticalMovieWrapperSearch.innerHTML = " ";
+    verticalMovieWrapperSearch.append(...makeMovieContainerY(data));
+}
+
+export async function getDetailsById(id) {
+    console.log('lol');
 }
 
 // Aux fn
@@ -94,12 +107,43 @@ function makeCategoryContainer(array) {
     return container;
 }
 
-function makeMovieContainer(data) {
+function makeMovieContainerX(data) {
     const allMovies = [];
     const movies = data.results;
 
     movies.forEach(movie => {
-        let moviePreview = `<img class="poster-container__img" src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}">`;
+        // let moviePreview = `<img class="poster-container__img" src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}">`;
+        let moviePreview = document.createElement('img');
+        moviePreview.classList.add('poster-container__img')
+        moviePreview.setAttribute('alt', movie.title);
+        moviePreview.setAttribute('src', `https://image.tmdb.org/t/p/w300${movie.poster_path}`);
+
+        moviePreview.addEventListener('click', () => {
+            location.hash = `#details=${movie.id}-${movie.title}`;
+        });
+
+        allMovies.push(moviePreview);
+    });
+
+    return allMovies;
+}
+
+function makeMovieContainerY(data) {
+    const allMovies = [];
+    const movies = data.results;
+
+    movies.forEach(movie => {
+        // let moviePreview = `<img class="poster-container__img" src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}">`;
+        let moviePreview = document.createElement('img');
+        moviePreview.classList.add('poster-wrapper__img')
+        moviePreview.addEventListener
+        moviePreview.setAttribute('alt', movie.title);
+        moviePreview.setAttribute('src', `https://image.tmdb.org/t/p/w300${movie.poster_path}`);
+
+        moviePreview.addEventListener('click', () => {
+            location.hash = `#details=${movie.id}-${movie.title}`;
+        });
+
         allMovies.push(moviePreview);
     });
 

@@ -33,12 +33,20 @@ const randomWrapperPreview = $('random-wrapper-preview');
 const topRatedWrapperPreview = $('top-rated-wrapper-preview');
 
 const verticalMovieWrapperCategory = $('vertical-movie-wrapper-category');
+const verticalMovieWrapperSearch = $('vertical-movie-wrapper-search');
 
 // Elements
 const searchHomeBtn = $('search-home-btn');
+const searchInput = $('search-input');
+const toSearchBtn = $('to-search-btn');
+
 const arrowBtn = $('header-arrow');
 const arrowBack = $('back-arrow');
 const arrowToHome = $('return-home');
+
 const headerShowMoreInfo = $('header-more-info');
+
 const categoryTitle = $('main-category-title');
-const randomTitle = $('main-random-title');
+const detailsTitle = $('details-section-title');
+const randomSectionTitle = $('main-random-title');
+const CategoriesSectionTitle = $('main-categories-title');

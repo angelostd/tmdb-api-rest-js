@@ -1,30 +1,27 @@
 import * as main from './main.js';
 
-let previousHash = '#home';
-
 searchHomeBtn.addEventListener('click', () => {
-    previousHash = location.hash;
     location.hash = '#search=';
 });
 
+toSearchBtn.addEventListener('click', () => {
+    location.hash = `#search=${encodeURI(searchInput.value.trim())}`;
+});
+
 arrowToHome.addEventListener('click', () => {
-    previousHash = location.hash;
-    location.hash = '#home';
+    location.hash = window.history.back();
 });
 
 headerShowMoreInfo.addEventListener('click', () => {
-    previousHash = location.hash;
     location.hash = '#details=';
 });
 
 arrowBtn.addEventListener('click', () => {
-    previousHash = location.hash;
-    location.hash = '#home';
+    location.hash = window.history.back();
 });
 
 arrowBack.addEventListener('click', () => {
-    previousHash = location.hash;
-    location.hash = '#home';
+    location.hash = window.history.back();
 });
 
 window.addEventListener('load', navigator, false);
@@ -40,6 +37,9 @@ function navigator() {
     } else {
         homePage();
     }
+
+    // reboot scrolling every page change
+    window.scrollTo(0, 0);
 }
 
 function homePage() {
@@ -90,8 +90,10 @@ function categoriesPage() {
 
     // => Api requests
     const [urlPage, categoryData] = location.hash.split('=');
-    const [id, name] = categoryData.split('-');
-    categoryTitle.innerHTML = name;
+    let [id, name] = categoryData.split('-');
+    name = name.replace('%20', ' ');
+
+    categoryTitle.innerText = name;
     main.getMoviesByCategory(id);
 }
 
@@ -111,10 +113,19 @@ function searchPage() {
     footerSection.classList.add('hidden');
     detailsSection.classList.add('hidden');
     categorySection.classList.add('hidden');
+
+    // => Api requests
+    try {
+        const [urlPage, query] = location.hash.split('=');
+        if (query !== '') {
+            main.getMoviesBySearch(query);
+        }
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 function detailsPage() {
-    console.log('detailing details detaliced');
     // => Removing classes
     headerSection.classList.remove('hidden');
     arrowBtn.classList.remove('hidden');
@@ -133,6 +144,15 @@ function detailsPage() {
     searchSection.classList.add('hidden');
     headerNavigationbar.classList.add('hidden');
     headerInformation.classList.add('hidden');
+
+    // => API
+    const [urlPage, detailsId] = location.hash.split('=');
+    let [id, name] = detailsId.split('-');
+    console.log('name :>> ', name);
+    console.log('id :>> ', id);
+    name = decodeURI(name);
+    detailsTitle.innerText = name;
+    main.getDetailsById(id);
 }
 
 // aux nav fn

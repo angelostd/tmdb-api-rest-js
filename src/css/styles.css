@@ -306,10 +306,11 @@ body {
     border: 2px solid var(--white-smoke);
 }
 
-.main-search__bar::placeholder {
+.main-search__bar::placeholder, .main-search__bar:focus {
     color: var(--white-smoke);
     padding-left: 16px;
 }
+
 /* footer */
 
 .footer {
