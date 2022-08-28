@@ -1,15 +1,30 @@
 import * as main from './main.js';
 
+let previousHash = '#home';
+
 searchHomeBtn.addEventListener('click', () => {
+    previousHash = location.hash;
     location.hash = '#search=';
 });
 
 arrowToHome.addEventListener('click', () => {
+    previousHash = location.hash;
     location.hash = '#home';
 });
 
 headerShowMoreInfo.addEventListener('click', () => {
+    previousHash = location.hash;
     location.hash = '#details=';
+});
+
+arrowBtn.addEventListener('click', () => {
+    previousHash = location.hash;
+    location.hash = '#home';
+});
+
+arrowBack.addEventListener('click', () => {
+    previousHash = location.hash;
+    location.hash = '#home';
 });
 
 window.addEventListener('load', navigator, false);
@@ -72,6 +87,12 @@ function categoriesPage() {
     footerSection.classList.add('hidden');
     detailsSection.classList.add('hidden');
     searchSection.classList.add('hidden');
+
+    // => Api requests
+    const [urlPage, categoryData] = location.hash.split('=');
+    const [id, name] = categoryData.split('-');
+    categoryTitle.innerHTML = name;
+    main.getMoviesByCategory(id);
 }
 
 function searchPage() {
@@ -112,4 +133,14 @@ function detailsPage() {
     searchSection.classList.add('hidden');
     headerNavigationbar.classList.add('hidden');
     headerInformation.classList.add('hidden');
+}
+
+// aux nav fn
+function returnBack() {
+    let aux;
+    aux = previousHash;
+    console.log(aux);
+    previousHash = location.hash;
+    console.log(previousHash);
+    location.hash = aux;
 }

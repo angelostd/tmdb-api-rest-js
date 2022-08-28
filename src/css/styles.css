@@ -399,9 +399,9 @@ body {
 }
 
 .category {
+    width: fit-content;
     border: 2px solid var(--white-smoke);
     border-radius: 8px;
     padding: 4px 8px;
     font-weight: var(--bold);
-    max-width: 76px;
 }
