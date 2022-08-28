@@ -96,7 +96,9 @@ export async function getDetailsById(id) {
     console.log('movie :>> ', movie);
 
     const movieImgUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-    headerSection.style.backgroundImage = `url('${movieImgUrl}')`
+    headerSection.style.backgroundImage = `
+    linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 16%),
+    url('${movieImgUrl}')`
 
     detailsVote.innerText = `${Math.round(movie.vote_average * 1000) / 100}%`;
 
@@ -105,6 +107,13 @@ export async function getDetailsById(id) {
     detailsCategories.append(...categoriesList);
 
     detailsOverview.innerText = movie.overview;
+}
+
+export async function getRelatedContentById(id) {
+    const { data } = await api(`movie/${id}/recommendations`);
+
+    detailsRelatedContent.innerHTML = "";
+    detailsRelatedContent.append(...makeMovieContainerX(data));
 }
 
 // Aux fn

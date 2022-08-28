@@ -54,3 +54,4 @@ const detailsTitle = $('details-section-title');
 const detailsOverview = $('details-section-overview');
 const detailsCategories = $('details-section-categories');
 const detailsVote = $('details-section-vote');
+const detailsRelatedContent = $('details-related-content');

@@ -149,8 +149,11 @@ function detailsPage() {
     const [urlPage, detailsId] = location.hash.split('=');
     let [id, name] = detailsId.split('-');
     name = decodeURI(name);
+
     detailsTitle.innerText = name;
+
     main.getDetailsById(id);
+    main.getRelatedContentById(id);
 }
 
 // aux nav fn
