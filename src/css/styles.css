@@ -306,7 +306,7 @@ body {
     border: 2px solid var(--white-smoke);
 }
 
-.main-search__bar::placeholder, .main-search__bar:focus {
+.main-search__bar::placeholder, .main-search__bar:focus, .main-search__bar:-internal-autofill-selected {
     color: var(--white-smoke);
     padding-left: 16px;
 }

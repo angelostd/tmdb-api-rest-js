@@ -93,7 +93,6 @@ export async function getMoviesBySearch(query) {
 
 export async function getDetailsById(id) {
     const { data: movie } = await api(`movie/${id}`);
-    console.log('movie :>> ', movie);
 
     const movieImgUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
     headerSection.style.backgroundImage = `
