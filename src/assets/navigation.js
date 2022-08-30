@@ -9,7 +9,7 @@ searchInput.addEventListener('keyup', () => {
 });
 
 arrowToHome.addEventListener('click', () => {
-    location.hash = window.history.back();
+    location.hash = '#home';
 });
 
 headerShowMoreInfo.addEventListener('click', () => {
