@@ -246,7 +246,9 @@ async function getMovieById(id) {
     });
 
     const videoUrl = `https://www.youtube.com/watch?v=${videoKey}`;
-    console.log('videoUrl :>> ', videoUrl);
+    trailerBtn.addEventListener('click', () => {
+        window.open(videoUrl);
+    });
 
     detailsVote.innerText = `${Math.round(movie.vote_average * 1000) / 100}%`;
 
@@ -282,7 +284,9 @@ async function getSerieById(id) {
     }
 
     const videoUrl = `https://www.youtube.com/watch?v=${videoKey}`;
-    console.log('videoUrl :>> ', videoUrl);
+    trailerBtn.addEventListener('click', () => {
+        window.open(videoUrl);
+    });
 
     detailsVote.innerText = `${Math.round(serie.vote_average * 1000) / 100}%`;
 
