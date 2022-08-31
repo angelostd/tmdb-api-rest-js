@@ -25,9 +25,10 @@ const headerNavigationbar = $('header-navbar');
 const headerInformation = $('header-info');
 
 const trendingWrapperPreview = $('trending-wrapper-preview');
+const trendingWrapperMovies = $('trending-wrapper-movies');
+const trendingWrapperSeries = $('trending-wrapper-series');
 
-const moviesCategoriesContainer = $('movies-categories-container-1');
-const moviesCategoriesContainer2 = $('movies-categories-container-2');
+const categoriesWrapperPreview = $('categories-wrapper-preview');
 
 const randomWrapperPreview = $('random-wrapper-preview');
 const topRatedWrapperPreview = $('top-rated-wrapper-preview');
@@ -55,3 +56,5 @@ const detailsOverview = $('details-section-overview');
 const detailsCategories = $('details-section-categories');
 const detailsVote = $('details-section-vote');
 const detailsRelatedContent = $('details-related-content');
+
+const trailerBtn = $('button-trailer');

@@ -4,12 +4,12 @@ searchHomeBtn.addEventListener('click', () => {
     location.hash = '#search=';
 });
 
-toSearchBtn.addEventListener('click', () => {
-    location.hash = `#search=${encodeURI(searchInput.value.trim())}`;
+searchInput.addEventListener('keyup', () => {
+    location.hash = `#search=${encodeURI(searchInput.value.trim()).replaceAll('%20', '+')}`;
 });
 
 arrowToHome.addEventListener('click', () => {
-    location.hash = window.history.back();
+    location.hash = '#home';
 });
 
 headerShowMoreInfo.addEventListener('click', () => {
@@ -71,7 +71,6 @@ function homePage() {
 }
 
 function categoriesPage() {
-    console.log('CATegory');
     // => Removing classes
     headerSection.classList.add('hidden');
     arrowBtn.classList.remove('hidden');
@@ -154,14 +153,4 @@ function detailsPage() {
 
     main.getDetailsById(id);
     main.getRelatedContentById(id);
-}
-
-// aux nav fn
-function returnBack() {
-    let aux;
-    aux = previousHash;
-    console.log(aux);
-    previousHash = location.hash;
-    console.log(previousHash);
-    location.hash = aux;
 }
