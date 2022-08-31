@@ -138,19 +138,25 @@ body {
     margin-bottom: 20px;
 }
 
-.poster-container {
+.trending-type-title {
+    font-size: 1rem;
+    font-weight: var(--regular);
+    margin: 12px 32px;
+}
+
+.poster-container, .categories-container {
     display: flex;
     overflow-x: scroll;
     overscroll-behavior-x: contain;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.poster-container::-webkit-scrollbar {
+.poster-container::-webkit-scrollbar, .categories-container::-webkit-scrollbar {
     display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.poster-container {
+.poster-container,.categories-container {
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
@@ -162,26 +168,6 @@ body {
     width: 100px;
     border-radius: 8px;
     margin-right: 16px;
-}
-
-.categories-groups {
-    height: 328px;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.categories-group-left,
-.categories-group-right {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.categories-group-left a,
-.categories-group-right a {
-    text-decoration: none;
-    color: var(--white-smoke);
 }
 
 .main-section--top-rated {
@@ -400,9 +386,110 @@ body {
 }
 
 .category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 152px;
+    height: 100px;
+    border-radius: 8px;
+    margin-right: 16px;
+    background-image: linear-gradient(to bottom, #626262, #959595, #c7c7c7);
+}
+
+.category > p {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+}
+
+.category-label {
     width: fit-content;
     border: 2px solid var(--white-smoke);
     border-radius: 8px;
     padding: 4px 8px;
     font-weight: var(--bold);
+}
+
+.example {
+    background-image: linear-gradient(to bottom, #486169, #67918e, #97c1a9);
+}
+
+/* categories gradient */
+
+#id28 {
+    /* action */
+    background-image: linear-gradient(to bottom, #4C1A1A, #842E2E, #bd4141);;
+}
+#id12 {
+    /* adventure */
+    background-image: linear-gradient(to bottom, #153038, #245462, #34788C);
+}
+#id16 {
+    /* animation */
+    background-image: linear-gradient(to bottom, #642D2A, #AE4E49, #F97068);
+}
+#id35 {
+    /* comedy */
+    background-image: linear-gradient(to bottom, #665B36, #B3A05F, #FFE488);
+}
+#id80 {
+    /* crime */
+    background-image: linear-gradient(to bottom, #1B0722, #2F0D3B, #431254);
+}
+#id99 {
+    /* documentary */
+    background-image: linear-gradient(to bottom, #38563A, #629765, #8CD790);
+}
+#id18 {
+    /* drama */
+    background-image: linear-gradient(to bottom, #101826, #1D2A43, #293C60);
+}
+#id10751  {
+    /* family */
+    background-image: linear-gradient(to bottom, #534D50, #91878C, #CFC1C8);
+}
+#id14 {
+    /* fantasy */
+    background-image: linear-gradient(to bottom, #4C3866, #8562B3, #BE8CFF);
+}
+#id36 {
+    /* history */
+    background-image: linear-gradient(to bottom, #51401E, #8E7035, #CBA04B);
+}
+#id27 {
+    /* horror */
+    background-image: linear-gradient(to bottom, #110100, #1A0200, #270100);
+}
+#id10402 {
+    /* music */
+    background-image: linear-gradient(to bottom, #283F4E, #476F89, #659EC4);
+}
+#id9648 {
+    /* mistery */
+    background-image: linear-gradient(to bottom, #120F24, #1F1A3E, #2C2559);
+}
+#id10749 {
+    /* romance */
+    background-image: linear-gradient(to bottom, #420E1D, #741933, #A62349);
+}
+#id878  {
+    /* sci fi */
+    background-image: linear-gradient(to bottom, #002029, #003847, #005066);
+}
+#id10770   {
+    /* tv */
+    background-image: linear-gradient(to bottom, #004127, #007144, #00A261);
+}
+#id53  {
+    /* thriller */
+    background-image: linear-gradient(to bottom, #131313, #292929, #3F3F3F)
+}
+#id10752  {
+    /* war */
+    background-image: linear-gradient(to bottom, #280000, #470000, #650000);
+}
+#id37 {
+    /* western */
+    background-image: linear-gradient(to bottom, #643D17, #AE6B29, #F9993A);
 }

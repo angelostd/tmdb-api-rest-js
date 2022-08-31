@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="icon" sizes="32x32" href="./assets/img/favicon-32x32.png">
     <title>Films D'arte</title>
@@ -29,11 +29,12 @@
             <div class="interaction-menu">
                 <i class="far fa-3x fa-bookmark interaction-menu__bookmark"></i>
                 <button type="button" class="interaction-menu__trailer-btn trailer-btn">Play Trailer</button>
-                <span id="header-more-info" class="icon-container"><i class="fas fa-1x fa-info interaction-menu__more-info"></i></span>
+                <span id="header-more-info" class="icon-container"><i
+                        class="fas fa-1x fa-info interaction-menu__more-info"></i></span>
             </div>
             <div class="hero-labels-section">
-                <a href="#"><span class="category hero-labels-section__category">Drama</span></a>
-                <a href="#"><span class="category hero-labels-section__category">Crime</span></a>
+                <a href="#"><span class="category-label hero-labels-section__category">Drama</span></a>
+                <a href="#"><span class="category-label hero-labels-section__category">Crime</span></a>
             </div>
         </div>
     </header>
@@ -42,7 +43,8 @@
             <div class="main-search-header">
                 <i id="return-home" class="fas fa-5x fa-chevron-left"></i>
                 <div class="main-search__input">
-                    <input id="search-input" class="main-search__bar" type="search" placeholder="Search movies, tv shows, ...">
+                    <input id="search-input" class="main-search__bar" type="search"
+                        placeholder="Search movies, tv shows, ...">
                     <i id="to-search-btn" class="fas fa-4x fa-search nav-bar__search-icon"></i>
                 </div>
             </div>
@@ -69,21 +71,17 @@
             <section class="main-details-more-info">
                 <div class="more-info-header">
                     <i class="far fa-3x fa-bookmark interaction-menu__bookmark"></i>
-                    <h1 id="details-section-title" class="more-info-header__title">Better Call Saul</h1>
+                    <h1 id="details-section-title" class="more-info-header__title"></h1>
                     <div class="more-details__liked-section">
-                        <p id="details-section-vote">96%</p>
+                        <p id="details-section-vote"></p>
                         <i class="fas fa-2x fa-thumbs-up"></i>
                     </div>
                 </div>
                 <div id="details-section-categories" class="more-info-categories">
-                    <a href="#"><span class="category hero-labels-section__category">Drama</span></a>
-                    <a href="#"><span class="category hero-labels-section__category">Crime</span></a>
                 </div>
                 <div class="more-info-readable">
                     <button type="button" class="more-details__trailer-btn trailer-btn">Play Trailer</button>
-                    <p id="details-section-overview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dignissim, arcu eu molestie
-                        ullamcorper, justo lacus convallis risus, eu pellentesque est magna sed sapien. Aenean sodales
-                        eleifend laoreet. In varius arcu eu odio.</p>
+                    <p id="details-section-overview"></p>
                 </div>
             </section>
             <section class="main-section main-section--related">
@@ -103,21 +101,21 @@
                     alt="poster of a movie"> -->
             </div>
         </section>
-        <section  id="trending-preview-section" class="main-section main-section--trending">
+        <section id="trending-preview-section" class="main-section main-section--trending">
             <h2 class="main-section__title main-section__title--trending">Trending</h2>
-            <div id="trending-wrapper-preview" class="main-section__poster-container poster-container">
-
+            <div id="trending-wrapper-preview" class="main-section__trending">
+                <h3 id="trending-title__movies" class="trending-type-title">Movies</h3>
+                <div id="trending-wrapper-movies" class="main-section__trending--movies poster-container"></div>
+                <h3 id="trending-title__series" class="trending-type-title">Series</h3>
+                <div id="trending-wrapper-series" class="main-section__trending--series poster-container"></div>
             </div>
         </section>
         <section id="categories-preview-section" class="main-section main-section--categories">
             <h2 id="main-categories-title" class="main-section__title main-section__title--categories">Categories</h2>
-            <div class="categories-groups">
-                <div id="movies-categories-container-2" class="categories-group-left">
-                    <!-- <a href="#"><span class="category">Drama</span></a> -->
-                </div>
-                <div id="movies-categories-container-1" class="categories-group-right">
-                    <!-- <a href="#"><span class="category">Sci-fi</span></a> -->
-                </div>
+            <div id="categories-wrapper-preview" class="categories-groups categories-container">
+                <!-- <div class="category">
+                    <p>Category 1</p>
+                </div> -->
             </div>
         </section>
         <section id="random-preview-section" class="main-section main-section--random">
@@ -129,7 +127,7 @@
             </div>
         </section>
         <section id="top-rated-preview-section" class="main-section main-section--top-rated">
-            <h2 class="main-section__title main-section__title--top-rated">Top Rated</h2>
+            <h2 class="main-section__title main-section__title--top-rated">Top Rated Movies</h2>
             <div id="top-rated-wrapper-preview" class="main-section__poster-container poster-container">
                 <!-- <img class="poster-container__img"
                     src="https://www.quepeliculaver.com/uploads/2021/12/7YncShtIGNJP5euTPSZGxGsImaN.jpg"
