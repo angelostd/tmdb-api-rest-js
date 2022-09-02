@@ -119,7 +119,7 @@ function makeCategoryContainer(array) {
         const category = document.createElement('div');
         const label = document.createElement('p');
 
-        console.log(array[index].id, array[index].name);
+        // console.log(array[index].id, array[index].name);
         label.innerText = `${array[index].name}`;
         category.addEventListener('click', () => {
             location.hash = `#category=${array[index].id}-${array[index].name}`;
@@ -245,9 +245,18 @@ async function getMovieById(id) {
         }
     });
 
-    const videoUrl = `https://www.youtube.com/watch?v=${videoKey}`;
-    trailerBtn.addEventListener('click', () => {
-        window.open(videoUrl);
+    const btn = document.createElement('button');
+    btn.setAttribute('id', 'button-trailer');
+    btn.classList.add('more-details__trailer-btn');
+    btn.classList.add('trailer-btn');
+    btn.innerText = 'Play Trailer';
+
+    const paragraph = document.createElement('p');
+    paragraph.setAttribute('id', 'details-section-overview');
+
+    const movieTrailerUrl = `https://www.youtube.com/watch?v=${videoKey}`;
+    btn.addEventListener('click', () => {
+        window.open(movieTrailerUrl);
     });
 
     detailsVote.innerText = `${Math.round(movie.vote_average * 1000) / 100}%`;
@@ -256,7 +265,10 @@ async function getMovieById(id) {
     detailsCategories.innerHTML = "";
     detailsCategories.append(...categoriesList);
 
-    detailsOverview.innerText = movie.overview;
+    overviewContainer.innerHTML = "";
+    overviewContainer.append(btn, paragraph);
+
+    paragraph.innerText = movie.overview;
 }
 
 async function getSerieById(id) {
@@ -283,9 +295,22 @@ async function getSerieById(id) {
         videoKey = videos[0].key;
     }
 
-    const videoUrl = `https://www.youtube.com/watch?v=${videoKey}`;
-    trailerBtn.addEventListener('click', () => {
-        window.open(videoUrl);
+    // <button id="button-trailer" type="button" class="more-details__trailer-btn trailer-btn">Play Trailer</button>
+    // <p id="details-section-overview"></p>
+
+    const btn = document.createElement('button');
+    btn.setAttribute('id', 'button-trailer');
+    btn.classList.add('more-details__trailer-btn');
+    btn.classList.add('trailer-btn');
+    btn.innerText = 'Play Trailer';
+
+    const paragraph = document.createElement('p');
+    paragraph.setAttribute('id', 'details-section-overview');
+
+    const serieTrailerUrl = `https://www.youtube.com/watch?v=${videoKey}`;
+
+    btn.addEventListener('click', () => {
+        window.open(serieTrailerUrl);
     });
 
     detailsVote.innerText = `${Math.round(serie.vote_average * 1000) / 100}%`;
@@ -300,7 +325,10 @@ async function getSerieById(id) {
         detailsCategories.append(...categoriesList);
     }
 
-    detailsOverview.innerText = serie.overview;
+    overviewContainer.innerHTML = "";
+    overviewContainer.append(btn, paragraph);
+
+    paragraph.innerText = serie.overview;
 }
 
 async function getMoviesRelated(id) {
