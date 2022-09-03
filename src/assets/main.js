@@ -205,8 +205,13 @@ function makeMixedContainerY(data) {
 
         let contentPreview = document.createElement('img');
         contentPreview.classList.add('poster-wrapper__img');
+
         contentPreview.setAttribute('alt', content.title);
         contentPreview.setAttribute('src', `https://image.tmdb.org/t/p/w300${content.poster_path}`);
+
+        if (content.title == undefined) {
+            contentPreview.setAttribute('alt', 'broken');
+        }
 
         if (content.media_type === 'movie') {
             contentPreview.addEventListener('click', () => {

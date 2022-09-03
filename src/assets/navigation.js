@@ -148,7 +148,6 @@ function detailsPage() {
     const [urlPage, detailsId] = location.hash.split('=');
     let [media, content] = detailsId.split('+');
     let [id, name] = content.split('-');
-    console.log('name :>> ', name);
     name = decodeURI(name);
 
     detailsTitle.innerText = name;

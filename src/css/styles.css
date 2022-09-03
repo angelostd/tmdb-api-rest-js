@@ -499,3 +499,7 @@ body {
 p[id^='id'].category-label {
     background-image: none !important;
 }
+
+img[alt^='broken'] {
+    display: none;
+}
