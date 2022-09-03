@@ -493,3 +493,13 @@ body {
     /* western */
     background-image: linear-gradient(to bottom, #643D17, #AE6B29, #F9993A);
 }
+
+/* I'm uncomfortable using the '!important' but I didn't find another solution :/  */
+
+p[id^='id'].category-label {
+    background-image: none !important;
+}
+
+img[alt^='broken'] {
+    display: none;
+}

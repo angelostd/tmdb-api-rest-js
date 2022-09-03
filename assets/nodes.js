@@ -33,6 +33,8 @@ const categoriesWrapperPreview = $('categories-wrapper-preview');
 const randomWrapperPreview = $('random-wrapper-preview');
 const topRatedWrapperPreview = $('top-rated-wrapper-preview');
 
+const overviewContainer = $('overview-details');
+
 const verticalMovieWrapperCategory = $('vertical-movie-wrapper-category');
 const verticalMovieWrapperSearch = $('vertical-movie-wrapper-search');
 

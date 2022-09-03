@@ -146,11 +146,12 @@ function detailsPage() {
 
     // => API
     const [urlPage, detailsId] = location.hash.split('=');
-    let [id, name] = detailsId.split('-');
+    let [media, content] = detailsId.split('+');
+    let [id, name] = content.split('-');
     name = decodeURI(name);
 
     detailsTitle.innerText = name;
 
-    main.getDetailsById(id);
-    main.getRelatedContentById(id);
+    main.getDetailsById(id, media);
+    main.getRelatedContentById(id, media);
 }
