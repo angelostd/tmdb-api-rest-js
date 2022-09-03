@@ -71,15 +71,12 @@ export async function getMoviesBySearch(query) {
     });
 
     verticalMovieWrapperSearch.innerHTML = " ";
-    verticalMovieWrapperSearch.append(...makeMovieContainerY(data));
+    verticalMovieWrapperSearch.append(...makeMixedContainerY(data));
 }
 
-export async function getDetailsById(id) {
+export async function getDetailsById(id, media) {
     try {
-        const content = document.getElementById(id);
-        const dataType = content.dataset.type;
-
-        if (dataType === 'movie') {
+        if (media === 'movie') {
             getMovieById(id);
         } else {
             getSerieById(id);
@@ -89,12 +86,9 @@ export async function getDetailsById(id) {
     }
 }
 
-export async function getRelatedContentById(id) {
+export async function getRelatedContentById(id, media) {
     try {
-        const content = document.getElementById(id);
-        const dataType = content.dataset.type;
-
-        if (dataType === 'movie') {
+        if (media === 'movie') {
             getMoviesRelated(id);
         } else {
             getSeriesRelated(id);
@@ -165,35 +159,12 @@ function makeMovieContainerX(data) {
         // let moviePreview = `<img class="poster-container__img" src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}">`;
         let moviePreview = document.createElement('img');
         moviePreview.classList.add('poster-container__img')
-        moviePreview.setAttribute('data-type', 'movie');
         moviePreview.setAttribute('id', `${movie.id}`);
         moviePreview.setAttribute('alt', movie.title);
         moviePreview.setAttribute('src', `https://image.tmdb.org/t/p/w300${movie.poster_path}`);
 
         moviePreview.addEventListener('click', () => {
-            location.hash = `#details=${movie.id}-${movie.title}`;
-        });
-
-        allMovies.push(moviePreview);
-    });
-
-    return allMovies;
-}
-
-function makeMovieContainerY(data) {
-    const allMovies = [];
-    const movies = data.results;
-
-    movies.forEach(movie => {
-        // let moviePreview = `<img class="poster-container__img" src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}">`;
-        let moviePreview = document.createElement('img');
-        moviePreview.classList.add('poster-wrapper__img');
-        moviePreview.setAttribute('data-type', 'movie');
-        moviePreview.setAttribute('alt', movie.title);
-        moviePreview.setAttribute('src', `https://image.tmdb.org/t/p/w300${movie.poster_path}`);
-
-        moviePreview.addEventListener('click', () => {
-            location.hash = `#details=${movie.id}-${movie.title}`;
+            location.hash = `#details=movie+${movie.id}-${movie.title}`;
         });
 
         allMovies.push(moviePreview);
@@ -216,13 +187,39 @@ function makeSeriesContainerX(data) {
         seriePreview.setAttribute('src', `https://image.tmdb.org/t/p/w300${serie.poster_path}`);
 
         seriePreview.addEventListener('click', () => {
-            location.hash = `#details=${serie.id}-${serie.name}`;
+            location.hash = `#details=tv+${serie.id}-${serie.name}`;
         });
 
         allSeries.push(seriePreview);
     });
 
     return allSeries;
+}
+
+function makeMixedContainerY(data) {
+    const allContents = [];
+    const contents = data.results;
+
+    contents.forEach(content => {
+        // let moviePreview = `<img class="poster-container__img" src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}">`;
+
+        let contentPreview = document.createElement('img');
+        contentPreview.classList.add('poster-wrapper__img');
+        contentPreview.setAttribute('alt', content.title);
+        contentPreview.setAttribute('src', `https://image.tmdb.org/t/p/w300${content.poster_path}`);
+
+        if (content.media_type === 'movie') {
+            contentPreview.addEventListener('click', () => {
+                location.hash = `#details=movie+${content.id}-${content.title}`;
+            });
+        } else if (content.media_type === 'tv') {
+            contentPreview.addEventListener('click', () => {
+                location.hash = `#details=tv+${content.id}-${content.name}`;
+            });
+        }
+        allContents.push(contentPreview);
+    });
+    return allContents;
 }
 
 async function getMovieById(id) {
