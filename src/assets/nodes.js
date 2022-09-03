@@ -51,7 +51,7 @@ const headerShowMoreInfo = $('header-more-info');
 
 const categoryTitle = $('main-category-title');
 const randomSectionTitle = $('main-random-title');
-const CategoriesSectionTitle = $('main-categories-title');
+const categoriesSectionTitle = $('main-categories-title');
 
 const detailsTitle = $('details-section-title');
 const detailsOverview = $('details-section-overview');
