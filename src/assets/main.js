@@ -35,14 +35,145 @@ export async function getRandomSeries() {
     let randomCategory = data.genres[getRandomInt(0, data.genres.length)];
 
     randomSectionTitle.innerHTML = randomCategory.name;
-    let data2 = await innerFetch(randomCategory.id);
+    let series = await innerFetch(randomCategory.id, 'tv');
 
     randomWrapperPreview.innerHTML = "";
-    randomWrapperPreview.append(...makeSeriesContainerX(data2));
+    randomWrapperPreview.append(...makeSeriesContainerX(series));
 }
 
-export async function getRandomHeader(params) {
-    // TODO
+export async function getRandomHeader() {
+    const decider = 1;
+    // const decider = Math.round(Math.random());
+    headerRandomMenu.innerHTML = " ";
+    headerRandomLabels.innerHTML = " ";
+
+    const bookmark = document.createElement('i');
+    bookmark.classList.add('far', 'fa-3x', 'fa-bookmark', 'interaction-menu__bookmark');
+
+    const btn = document.createElement('button');
+    btn.classList.add('interaction-menu__trailer-btn', 'trailer-btn');
+    btn.innerText = 'Play Trailer';
+
+    const moreInfoIcon = document.createElement('i');
+    moreInfoIcon.classList.add('fas', 'fa-1x', 'fa-info', 'interaction-menu__more-info');
+    const moreInfo = document.createElement('span');
+    moreInfo.classList.add('icon-container');
+    moreInfo.setAttribute('id', 'header-more-info');
+    moreInfo.append(moreInfoIcon);
+
+    const categoriesList = [];
+
+    if (decider === 0) {
+        const { data: genres } = await api('genre/movie/list');
+
+        let randomCategory = genres.genres[getRandomInt(0, genres.genres.length)];
+        let movies = await innerFetch(randomCategory.id, 'movie');
+        let movie;
+
+        do {
+            movie = movies.results[getRandomInt(0, movies.results.length)];
+        } while (movie.adult !== false);
+
+        headerRandomTitle.innerText = movie.title;
+        const movieImgUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+        headerSection.style.backgroundImage = `
+            linear-gradient(0deg,
+            rgba(0, 0, 0, 0.75) 0%,
+            rgba(92, 92, 92, 0.303) 33%,
+            rgba(92, 92, 92, 0.303) 66%,
+            rgba(0, 0, 0, 0.75) 100%),
+            url('${movieImgUrl}')`;
+
+        const { data: videoObject } = await api(`movie/${movie.id}`, {
+            params: {
+                append_to_response: 'videos',
+            },
+        });
+        const videos = videoObject.videos.results;
+        let videoKey;
+        videos.forEach(video => {
+            if (video.type === 'Trailer') {
+                videoKey = video.key;
+            }
+        });
+
+        const movieTrailerUrl = `https://www.youtube.com/watch?v=${videoKey}`;
+        btn.addEventListener('click', () => {
+            window.open(movieTrailerUrl);
+        });
+
+        moreInfo.addEventListener('click', () => {
+            location.hash = `#details=movie+${movie.id}-${movie.title}`;
+        });
+
+        movie.genre_ids.forEach(categoryId => {
+            const category = document.createElement('p');
+            category.setAttribute('id', 'id' + categoryId);
+            category.classList.add('category-label');
+            category.innerText = `${getCategoryName(categoryId)}`;
+
+            category.addEventListener('click', () => {
+                location.hash = `#category=${categoryId}-${getCategoryName(categoryId)}`;
+            });
+
+            categoriesList.push(category);
+        });
+    } else {
+        const { data: genres } = await api('genre/tv/list');
+        let randomCategory = genres.genres[getRandomInt(0, genres.genres.length)];
+        let series = await innerFetch(randomCategory.id, 'tv');
+        let serie = series.results[getRandomInt(0, series.results.length)];
+
+        headerRandomTitle.innerText = serie.name;
+        const serieImgUrl = `https://image.tmdb.org/t/p/w500${serie.poster_path}`;
+        headerSection.style.backgroundImage = `
+            linear-gradient(0deg,
+            rgba(0, 0, 0, 0.75) 0%,
+            rgba(92, 92, 92, 0.303) 33%,
+            rgba(92, 92, 92, 0.303) 66%,
+            rgba(0, 0, 0, 0.75) 100%),
+            url('${serieImgUrl}')`;
+
+        const { data: videoObject } = await api(`tv/${serie.id}`, {
+            params: {
+                append_to_response: 'videos',
+            },
+        });
+        const videos = videoObject.videos.results;
+        let videoKey;
+        videos.forEach(video => {
+            if (video.type === 'Trailer') {
+                videoKey = video.key;
+            }
+        });
+
+        const serieTrailerUrl = `https://www.youtube.com/watch?v=${videoKey}`;
+        btn.addEventListener('click', () => {
+            window.open(serieTrailerUrl);
+        });
+
+        moreInfo.addEventListener('click', () => {
+            location.hash = `#details=serie+${serie.id}-${serie.name}`;
+        });
+
+        serie.genre_ids.forEach(categoryId => {
+            const category = document.createElement('p');
+            category.setAttribute('id', 'id' + categoryId);
+            category.classList.add('category-label');
+            category.innerText = `${getCategoryName(categoryId)}`;
+
+            category.addEventListener('click', () => {
+                location.hash = `#category=${categoryId}-${getCategoryName(categoryId)}`;
+            });
+
+            categoriesList.push(category);
+        });
+    }
+
+    headerRandomMenu.innerHTML = " ";
+    headerRandomLabels.innerHTML = " ";
+    headerRandomLabels.append(...categoriesList);
+    headerRandomMenu.append(bookmark, btn, moreInfo);
 }
 
 export async function getTopRatedMoviesPreview() {
@@ -60,7 +191,7 @@ export async function getMoviesByCategory(id) {
     });
 
     verticalMovieWrapperCategory.innerHTML = " ";
-    verticalMovieWrapperCategory.append(...makeMovieContainerY(data))
+    verticalMovieWrapperCategory.append(...makeMixedContainerY(data))
 }
 
 export async function getMoviesBySearch(query) {
@@ -221,6 +352,10 @@ function makeMixedContainerY(data) {
             contentPreview.addEventListener('click', () => {
                 location.hash = `#details=tv+${content.id}-${content.name}`;
             });
+        } else {
+            contentPreview.addEventListener('click', () => {
+                location.hash = `#details=movie+${content.id}-${content.title}`;
+            });
         }
         allContents.push(contentPreview);
     });
@@ -347,12 +482,101 @@ async function getSeriesRelated(id) {
     detailsRelatedContent.append(...makeSeriesContainerX(data));
 }
 
-async function innerFetch(id) {
-    const { data } = await api('/discover/tv', {
+async function innerFetch(id, media_type) {
+    const { data } = await api(`/discover/${media_type}`, {
         params: {
             with_genres: id,
+            include_adult: false,
         },
     });
-
     return data;
+}
+
+function getCategoryName(id) {
+    switch (id) {
+        case 28:
+            return 'Action'
+            break;
+        case 12:
+            return 'Adventure'
+            break;
+        case 16:
+            return 'Animation'
+            break;
+        case 35:
+            return 'Comedy'
+            break;
+        case 80:
+            return 'Crime'
+            break;
+        case 99:
+            return 'Documentary'
+            break;
+        case 18:
+            return 'Drama'
+            break;
+        case 10751:
+            return 'Family'
+            break;
+        case 14:
+            return 'Fantasy'
+            break;
+        case 36:
+            return 'History'
+            break;
+        case 27:
+            return 'Horror'
+            break;
+        case 10402:
+            return 'Music'
+            break;
+        case 9648:
+            return 'Mistery'
+            break;
+        case 10749:
+            return 'Romance'
+            break;
+        case 878:
+            return 'Science Fiction'
+            break;
+        case 10770:
+            return 'Tv Movie'
+            break;
+        case 53:
+            return 'Thriller'
+            break;
+        case 10752:
+            return 'War'
+            break;
+        case 37:
+            return 'Western'
+            break;
+        case 37:
+            return 'Action & Adventure'
+            break;
+        case 10762:
+            return 'Kids'
+            break;
+        case 10763:
+            return 'News'
+            break;
+        case 10764:
+            return 'Reality'
+            break;
+        case 10765:
+            return 'Sci-Fi & Fantasy'
+            break;
+        case 10766:
+            return 'Soap'
+            break;
+        case 10767:
+            return 'Talk'
+            break;
+        case 10768:
+            return 'War & Politics'
+            break;
+        default:
+            return null;
+            break;
+    }
 }

@@ -23,6 +23,8 @@ const searchSection = $('main-search');
 // List & Containers
 const headerNavigationbar = $('header-navbar');
 const headerInformation = $('header-info');
+const headerRandomMenu = $('interaction-menu');
+const headerRandomLabels = $('header-info__labels');
 
 const trendingWrapperPreview = $('trending-wrapper-preview');
 const trendingWrapperMovies = $('trending-wrapper-movies');
@@ -39,6 +41,8 @@ const verticalMovieWrapperCategory = $('vertical-movie-wrapper-category');
 const verticalMovieWrapperSearch = $('vertical-movie-wrapper-search');
 
 // Elements
+const headerRandomTitle = $('header-info__title');
+
 const searchHomeBtn = $('search-home-btn');
 const searchInput = $('search-input');
 const toSearchBtn = $('to-search-btn');

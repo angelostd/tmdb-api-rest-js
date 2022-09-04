@@ -12,9 +12,9 @@ arrowToHome.addEventListener('click', () => {
     location.hash = '#home';
 });
 
-headerShowMoreInfo.addEventListener('click', () => {
-    location.hash = '#details=';
-});
+// headerShowMoreInfo.addEventListener('click', () => {
+//     location.hash = '#details=';
+// });
 
 arrowBtn.addEventListener('click', () => {
     location.hash = window.history.back();
@@ -68,6 +68,7 @@ function homePage() {
     main.getTopRatedMoviesPreview();
     main.getCategoriesPreview();
     main.getRandomSeries();
+    main.getRandomHeader();
 }
 
 function categoriesPage() {
