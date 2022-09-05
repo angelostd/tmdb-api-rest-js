@@ -9,6 +9,12 @@ const api = axios.create({
     },
 });
 
+export async function createGuestId() {
+    const { data } = await api('authentication/guest_session/new');
+    console.log('data :>> ', data);
+    return data.guest_session_id;
+}
+
 export async function getTrendingMoviesPreview() {
     const { data: movies } = await api('trending/movie/day');
     const { data: series } = await api('trending/tv/day');
@@ -227,6 +233,14 @@ export async function getRelatedContentById(id, media) {
     } catch (error) {
         console.log('it fails when reload');
     }
+}
+
+export async function getWatchlist() {
+    // const {data} = await api(`account/${sessionId}/watchlist/movies`);
+    // console.log('data :>> ', data);
+
+    // I just read the doc about the api and it doesn't allow save to any list
+    // with a guest id, so I got to remove the feature or make a login in the future
 }
 
 // Aux fn
@@ -579,4 +593,17 @@ function getCategoryName(id) {
             return null;
             break;
     }
+}
+
+async function addToWatchlist(content_type, content_id) {
+    const { data } = api(`account/${sessionId}/watchlist`, {
+        method: 'POST',
+        body: {
+            'media_type': content_type,
+            'media_id': content_id,
+            'watchlist': true
+        }
+    });
+    console.log('data :>> ', data);
+    getWatchlist();
 }
