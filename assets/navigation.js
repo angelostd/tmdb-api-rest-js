@@ -12,9 +12,9 @@ arrowToHome.addEventListener('click', () => {
     location.hash = '#home';
 });
 
-headerShowMoreInfo.addEventListener('click', () => {
-    location.hash = '#details=';
-});
+// headerShowMoreInfo.addEventListener('click', () => {
+//     location.hash = '#details=';
+// });
 
 arrowBtn.addEventListener('click', () => {
     location.hash = window.history.back();
@@ -26,6 +26,15 @@ arrowBack.addEventListener('click', () => {
 
 window.addEventListener('load', navigator, false);
 window.addEventListener('hashchange', navigator, false);
+
+let sessionId = sessionStorage.getItem('session_id');
+// console.log('sessionId :>> ', sessionId);
+// 1533de950abda47aa2519fa76c2ad8b9
+
+if (sessionId == null) {
+    const idCreated = await main.createGuestId();
+    sessionStorage.setItem('session_id', idCreated);;
+}
 
 function navigator() {
     if (location.hash.startsWith('#search=')) {
@@ -68,6 +77,7 @@ function homePage() {
     main.getTopRatedMoviesPreview();
     main.getCategoriesPreview();
     main.getRandomSeries();
+    main.getRandomHeader();
 }
 
 function categoriesPage() {
