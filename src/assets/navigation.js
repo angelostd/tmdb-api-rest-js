@@ -56,7 +56,7 @@ function homePage() {
     headerSection.classList.remove('hero-details');
     headerSection.classList.remove('hidden');
     headerSection.style.backgroundImage = '';
-    myListPreviewSection.classList.remove('hidden');
+    // myListPreviewSection.classList.remove('hidden');
     trendingPreviewSection.classList.remove('hidden');
     categoriesPreviewSection.classList.remove('hidden');
     randomPreviewSection.classList.remove('hidden');
@@ -88,7 +88,7 @@ function categoriesPage() {
     mainSection.classList.remove('main--details');
 
     // => Adding classes
-    myListPreviewSection.classList.add('hidden');
+    // myListPreviewSection.classList.add('hidden');
     trendingPreviewSection.classList.add('hidden');
     categoriesPreviewSection.classList.add('hidden');
     randomPreviewSection.classList.add('hidden');
@@ -114,7 +114,7 @@ function searchPage() {
     mainSection.classList.remove('main--details');
 
     // => Adding classes
-    myListPreviewSection.classList.add('hidden');
+    // myListPreviewSection.classList.add('hidden');
     trendingPreviewSection.classList.add('hidden');
     categoriesPreviewSection.classList.add('hidden');
     randomPreviewSection.classList.add('hidden');
@@ -144,7 +144,7 @@ function detailsPage() {
     // => Adding classes
     mainSection.classList.add('main--details');
     headerSection.classList.add('hero-details');
-    myListPreviewSection.classList.add('hidden');
+    // myListPreviewSection.classList.add('hidden');
     trendingPreviewSection.classList.add('hidden');
     categoriesPreviewSection.classList.add('hidden');
     randomPreviewSection.classList.add('hidden');
