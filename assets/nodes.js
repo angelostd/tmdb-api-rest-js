@@ -25,6 +25,7 @@ const headerNavigationbar = $('header-navbar');
 const headerInformation = $('header-info');
 const headerRandomMenu = $('interaction-menu');
 const headerRandomLabels = $('header-info__labels');
+const headerTrailerContainer = $('trailer-container');
 
 const trendingWrapperPreview = $('trending-wrapper-preview');
 const trendingWrapperMovies = $('trending-wrapper-movies');

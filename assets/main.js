@@ -11,7 +11,6 @@ const api = axios.create({
 
 export async function createGuestId() {
     const { data } = await api('authentication/guest_session/new');
-    console.log('data :>> ', data);
     return data.guest_session_id;
 }
 
@@ -48,8 +47,7 @@ export async function getRandomSeries() {
 }
 
 export async function getRandomHeader() {
-    const decider = 1;
-    // const decider = Math.round(Math.random());
+    const decider = Math.round(Math.random());
     headerRandomMenu.innerHTML = " ";
     headerRandomLabels.innerHTML = " ";
 
@@ -103,9 +101,17 @@ export async function getRandomHeader() {
             }
         });
 
-        const movieTrailerUrl = `https://www.youtube.com/watch?v=${videoKey}`;
+        const movieTrailerUrl = `https://www.youtube.com/embed/${videoKey}?modestbranding=1&fs=0`;
         btn.addEventListener('click', () => {
-            window.open(movieTrailerUrl);
+            const trailerEmbed = document.createElement('iframe');
+            trailerEmbed.setAttribute('src', movieTrailerUrl);
+            trailerEmbed.setAttribute('frameborder', 0);
+            const arrow = document.createElement('i');
+            arrow.classList.add('fas', 'fa-5x', 'fa-chevron-left', 'arrow-trailer');
+            arrow.addEventListener('click', () => {
+                headerTrailerContainer.innerHTML ='';
+            });
+            headerTrailerContainer.append(arrow, trailerEmbed);
         });
 
         moreInfo.addEventListener('click', () => {
@@ -153,9 +159,17 @@ export async function getRandomHeader() {
             }
         });
 
-        const serieTrailerUrl = `https://www.youtube.com/watch?v=${videoKey}`;
+        const serieTrailerUrl = `https://www.youtube.com/embed/${videoKey}?autoplay=1&cc_load_policy=1&modestbranding=1&rel=0&fs=0`;
         btn.addEventListener('click', () => {
-            window.open(serieTrailerUrl);
+            const trailerEmbed = document.createElement('iframe');
+            trailerEmbed.setAttribute('src', serieTrailerUrl);
+            trailerEmbed.setAttribute('frameborder', 0);
+            const arrow = document.createElement('i');
+            arrow.classList.add('fas', 'fa-5x', 'fa-chevron-left', 'arrow-trailer');
+            arrow.addEventListener('click', () => {
+                headerTrailerContainer.innerHTML ='';
+            });
+            headerTrailerContainer.append(arrow, trailerEmbed);
         });
 
         moreInfo.addEventListener('click', () => {
@@ -405,9 +419,21 @@ async function getMovieById(id) {
     const paragraph = document.createElement('p');
     paragraph.setAttribute('id', 'details-section-overview');
 
-    const movieTrailerUrl = `https://www.youtube.com/watch?v=${videoKey}`;
+    const movieTrailerUrl = `https://www.youtube.com/embed/${videoKey}?autoplay=1&cc_load_policy=1&modestbranding=1&rel=0&fs=0`;
     btn.addEventListener('click', () => {
-        window.open(movieTrailerUrl);
+        footerSection.classList.add('footer--trailer');
+        mainSection.classList.add('main-details--trailer');
+        const trailerEmbed = document.createElement('iframe');
+        trailerEmbed.setAttribute('src', movieTrailerUrl);
+        trailerEmbed.setAttribute('frameborder', 0);
+        const arrow = document.createElement('i');
+        arrow.classList.add('fas', 'fa-5x', 'fa-chevron-left', 'arrow-trailer');
+        arrow.addEventListener('click', () => {
+            headerTrailerContainer.innerHTML ='';
+            footerSection.classList.remove('footer--trailer');
+            mainSection.classList.remove('main-details--trailer');
+        });
+        headerTrailerContainer.append(arrow, trailerEmbed);
     });
 
     detailsVote.innerText = `${Math.round(movie.vote_average * 1000) / 100}%`;
@@ -458,10 +484,21 @@ async function getSerieById(id) {
     const paragraph = document.createElement('p');
     paragraph.setAttribute('id', 'details-section-overview');
 
-    const serieTrailerUrl = `https://www.youtube.com/watch?v=${videoKey}`;
-
+    const serieTrailerUrl = `https://www.youtube.com/embed/${videoKey}?autoplay=1&cc_load_policy=1&modestbranding=1&rel=0&fs=0`;
     btn.addEventListener('click', () => {
-        window.open(serieTrailerUrl);
+        footerSection.classList.add('footer--trailer');
+        mainSection.classList.add('main-details--trailer');
+        const trailerEmbed = document.createElement('iframe');
+        trailerEmbed.setAttribute('src', serieTrailerUrl);
+        trailerEmbed.setAttribute('frameborder', 0);
+        const arrow = document.createElement('i');
+        arrow.classList.add('fas', 'fa-5x', 'fa-chevron-left', 'arrow-trailer');
+        arrow.addEventListener('click', () => {
+            headerTrailerContainer.innerHTML ='';
+            footerSection.classList.remove('footer--trailer');
+            mainSection.classList.remove('main-details--trailer');
+        });
+        headerTrailerContainer.append(arrow, trailerEmbed);
     });
 
     detailsVote.innerText = `${Math.round(serie.vote_average * 1000) / 100}%`;
