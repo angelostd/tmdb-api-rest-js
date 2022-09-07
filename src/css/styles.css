@@ -187,6 +187,10 @@ body {
     border-radius: 20px 20px 0px 0px;
 }
 
+.main-details--trailer {
+    top: 0;
+}
+
 .main-details-more-info {
     padding: 0px 24px;
     height: 232px;
@@ -312,6 +316,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.footer--trailer {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
 }
 
 .footer__tmdb-logo img {

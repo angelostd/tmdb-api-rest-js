@@ -421,6 +421,8 @@ async function getMovieById(id) {
 
     const movieTrailerUrl = `https://www.youtube.com/embed/${videoKey}?autoplay=1&cc_load_policy=1&modestbranding=1&rel=0&fs=0`;
     btn.addEventListener('click', () => {
+        footerSection.classList.add('footer--trailer');
+        mainSection.classList.add('main-details--trailer');
         const trailerEmbed = document.createElement('iframe');
         trailerEmbed.setAttribute('src', movieTrailerUrl);
         trailerEmbed.setAttribute('frameborder', 0);
@@ -428,6 +430,8 @@ async function getMovieById(id) {
         arrow.classList.add('fas', 'fa-5x', 'fa-chevron-left', 'arrow-trailer');
         arrow.addEventListener('click', () => {
             headerTrailerContainer.innerHTML ='';
+            footerSection.classList.remove('footer--trailer');
+            mainSection.classList.remove('main-details--trailer');
         });
         headerTrailerContainer.append(arrow, trailerEmbed);
     });
@@ -482,6 +486,8 @@ async function getSerieById(id) {
 
     const serieTrailerUrl = `https://www.youtube.com/embed/${videoKey}?autoplay=1&cc_load_policy=1&modestbranding=1&rel=0&fs=0`;
     btn.addEventListener('click', () => {
+        footerSection.classList.add('footer--trailer');
+        mainSection.classList.add('main-details--trailer');
         const trailerEmbed = document.createElement('iframe');
         trailerEmbed.setAttribute('src', serieTrailerUrl);
         trailerEmbed.setAttribute('frameborder', 0);
@@ -489,6 +495,8 @@ async function getSerieById(id) {
         arrow.classList.add('fas', 'fa-5x', 'fa-chevron-left', 'arrow-trailer');
         arrow.addEventListener('click', () => {
             headerTrailerContainer.innerHTML ='';
+            footerSection.classList.remove('footer--trailer');
+            mainSection.classList.remove('main-details--trailer');
         });
         headerTrailerContainer.append(arrow, trailerEmbed);
     });
