@@ -109,9 +109,11 @@ export async function getRandomHeader() {
             const arrow = document.createElement('i');
             arrow.classList.add('fas', 'fa-5x', 'fa-chevron-left', 'arrow-trailer');
             arrow.addEventListener('click', () => {
-                headerTrailerContainer.innerHTML ='';
+                headerTrailerContainer.innerHTML = '';
+                enableScroll();
             });
             headerTrailerContainer.append(arrow, trailerEmbed);
+            disableScroll();
         });
 
         moreInfo.addEventListener('click', () => {
@@ -167,9 +169,11 @@ export async function getRandomHeader() {
             const arrow = document.createElement('i');
             arrow.classList.add('fas', 'fa-5x', 'fa-chevron-left', 'arrow-trailer');
             arrow.addEventListener('click', () => {
-                headerTrailerContainer.innerHTML ='';
+                headerTrailerContainer.innerHTML = '';
+                enableScroll();
             });
             headerTrailerContainer.append(arrow, trailerEmbed);
+            disableScroll();
         });
 
         moreInfo.addEventListener('click', () => {
@@ -204,11 +208,7 @@ export async function getTopRatedMoviesPreview() {
 }
 
 export async function getMoviesByCategory(id) {
-    const { data } = await api('/discover/movie', {
-        params: {
-            with_genres: id,
-        },
-    });
+    const data = requestMoviesByCategoryId(id);
 
     verticalMovieWrapperCategory.innerHTML = " ";
     verticalMovieWrapperCategory.append(...makeMixedContainerY(data))
@@ -257,7 +257,43 @@ export async function getWatchlist() {
     // with a guest id, so I got to remove the feature or make a login in the future
 }
 
+// export async function getAllMovies() {
+//     // const disclaimer = document.createElement('h2');
+//     // disclaimer.classList.add('main-section__title');
+//     // disclaimer.innerText = "Sorry. this feature isn't avaible right now";
+//     // const arrow = document.createElement('i');
+//     // // const art = document.createElement('article');
+//     // arrow.classList.add('fas', 'fa-5x', 'fa-chevron-left', 'arrow-trailer');
+//     // arrow.addEventListener('click', () => {
+//     //     location.hash = '#home';
+//     // });
+//     // mainSection.append(arrow, disclaimer);
+
+//     // const sectionsList = [];
+//     // const { data: categories } = await api('genre/movie/list');
+//     // categories.genres.forEach(genre => {
+//     //     const section = document.createElement('section');
+//     //     let container = document.createElement('div');
+//     //     const title = document.createElement('h2');
+//     //     section.classList.add('main-section');
+//     //     container.classList.add('main-section__poster-container', 'poster-container');
+//     //     title.classList.add('main-section__title', `main-section__title--${genre.name.replaceAll(' ', '-')}`);
+
+//     //     title.innerText = genre.name;
+//     //     requestMoviesByCategoryId(genre.id)
+//     //         .then(result => {
+//     //             container = makeMovieContainerX(result);
+//     //         });
+
+//     //     section.append(title, container);
+//     //     sectionsList.push(section);
+//     // });
+//     // art.append(...sectionsList);
+//     // mainSection.append(arrow, art);
+// }
+
 // Aux fn
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -324,6 +360,7 @@ function makeMovieContainerX(data) {
 
         moviePreview.addEventListener('click', () => {
             location.hash = `#details=movie+${movie.id}-${movie.title}`;
+            headerTrailerContainer.innerHTML = '';
         });
 
         allMovies.push(moviePreview);
@@ -347,6 +384,7 @@ function makeSeriesContainerX(data) {
 
         seriePreview.addEventListener('click', () => {
             location.hash = `#details=tv+${serie.id}-${serie.name}`;
+            headerTrailerContainer.innerHTML = '';
         });
 
         allSeries.push(seriePreview);
@@ -375,14 +413,17 @@ function makeMixedContainerY(data) {
         if (content.media_type === 'movie') {
             contentPreview.addEventListener('click', () => {
                 location.hash = `#details=movie+${content.id}-${content.title}`;
+                headerTrailerContainer.innerHTML = '';
             });
         } else if (content.media_type === 'tv') {
             contentPreview.addEventListener('click', () => {
                 location.hash = `#details=tv+${content.id}-${content.name}`;
+                headerTrailerContainer.innerHTML = '';
             });
         } else {
             contentPreview.addEventListener('click', () => {
                 location.hash = `#details=movie+${content.id}-${content.title}`;
+                headerTrailerContainer.innerHTML = '';
             });
         }
         allContents.push(contentPreview);
@@ -429,7 +470,7 @@ async function getMovieById(id) {
         const arrow = document.createElement('i');
         arrow.classList.add('fas', 'fa-5x', 'fa-chevron-left', 'arrow-trailer');
         arrow.addEventListener('click', () => {
-            headerTrailerContainer.innerHTML ='';
+            headerTrailerContainer.innerHTML = '';
             footerSection.classList.remove('footer--trailer');
             mainSection.classList.remove('main-details--trailer');
         });
@@ -494,7 +535,7 @@ async function getSerieById(id) {
         const arrow = document.createElement('i');
         arrow.classList.add('fas', 'fa-5x', 'fa-chevron-left', 'arrow-trailer');
         arrow.addEventListener('click', () => {
-            headerTrailerContainer.innerHTML ='';
+            headerTrailerContainer.innerHTML = '';
             footerSection.classList.remove('footer--trailer');
             mainSection.classList.remove('main-details--trailer');
         });
@@ -645,4 +686,25 @@ async function addToWatchlist(content_type, content_id) {
     getWatchlist();
 }
 
-//  commit to deploy c:
+function disableScroll() {
+    // window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+    // window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+    window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+    window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+}
+
+function enableScroll() {
+    // window.removeEventListener('DOMMouseScroll', preventDefault, false);
+    // window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
+    window.removeEventListener('touchmove', preventDefault, wheelOpt);
+    window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+}
+
+async function requestMoviesByCategoryId(id) {
+    const { data } = await api('/discover/movie', {
+        params: {
+            with_genres: id,
+        },
+    });
+    return data;
+}

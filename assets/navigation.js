@@ -43,6 +43,10 @@ function navigator() {
         detailsPage();
     } else if (location.hash.startsWith('#category=')) {
         categoriesPage();
+    } else if (location.hash.startsWith('#movies')) {
+        location.hash = '#home';
+    } else if (location.hash.startsWith('#series')) {
+        location.hash = '#home';
     } else {
         homePage();
     }
@@ -77,7 +81,9 @@ function homePage() {
     main.getTopRatedMoviesPreview();
     main.getCategoriesPreview();
     main.getRandomSeries();
-    main.getRandomHeader();
+    if (location.hash.startsWith('#home')) {
+        main.getRandomHeader();
+    }
 }
 
 function categoriesPage() {
@@ -108,12 +114,12 @@ function categoriesPage() {
 
 function searchPage() {
     // => Removing classes
-    headerSection.classList.add('hidden');
     arrowBtn.classList.remove('hidden');
     searchSection.classList.remove('hidden');
     mainSection.classList.remove('main--details');
 
     // => Adding classes
+    headerSection.classList.add('hidden');
     // myListPreviewSection.classList.add('hidden');
     trendingPreviewSection.classList.add('hidden');
     categoriesPreviewSection.classList.add('hidden');
@@ -164,4 +170,31 @@ function detailsPage() {
 
     main.getDetailsById(id, media);
     main.getRelatedContentById(id, media);
+}
+
+// function moviesPage() {
+//     showNothing();
+//     main.getAllMovies();
+// }
+
+// function seriesPage() {
+//     showNothing();
+//     main.getAllMovies();
+// }
+
+function showNothing(params) {
+    // => Removing classes
+    arrowBtn.classList.remove('hidden');
+    mainSection.classList.remove('main--details');
+
+    // => Adding classes
+    searchSection.classList.add('hidden');
+    headerSection.classList.add('hidden');
+    trendingPreviewSection.classList.add('hidden');
+    categoriesPreviewSection.classList.add('hidden');
+    randomPreviewSection.classList.add('hidden');
+    topRatedPreviewSection.classList.add('hidden');
+    footerSection.classList.add('hidden');
+    detailsSection.classList.add('hidden');
+    categorySection.classList.add('hidden');
 }
